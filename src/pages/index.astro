@@ -6,6 +6,7 @@ import DownloadIcon from "../components/icons/DownloadIcon.astro";
 import { skills } from "../content/config";
 
 import { getCollection } from "astro:content";
+import ExternalLinkIcon from "../components/icons/ExternalLinkIcon.astro";
 
 const projects = await getCollection("projects");
 
@@ -14,7 +15,7 @@ export const prerender = true;
 
 <Layout title="Maximo Dip">
   <main>
-    <Section>
+    <Section data-aos="fade-in" data-aos-once="true" data-aos-delay="100">
       <div>
         <a
           target="_blank"
@@ -33,15 +34,20 @@ export const prerender = true;
           Trabajos
         </a>
         <a
-          href="/cv.pdf"
+          href="/CV.pdf"
           target="_blank"
-          class="flex items-center px-5 py-2.5 rounded-lg gap-x-2 bg-white/5 font-semibold hover:opacity-70"
+          class="flex items-center px-5 gap-x-1 py-2.5 rounded-lg bg-white/5 font-semibold hover:opacity-70"
         >
-          CV <DownloadIcon />
+          CV <ExternalLinkIcon class="size-3 -inset-y-1 relative" />
         </a>
       </div>
     </Section>
-    <Section arial-label="Informacion sobre mi">
+    <Section
+      arial-label="Informacion sobre mi"
+      data-aos="fade-in"
+      data-aos-once="true"
+      data-aos-delay="100"
+    >
       <h1 class="text-2xl font-bold">Sobre mí</h1>
       <div
         class="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert"
@@ -59,6 +65,7 @@ export const prerender = true;
     <Section
       arial-label="Mis estudios como programador"
       data-aos="fade-in"
+      data-aos-once="true"
       data-aos-delay="100"
     >
       <h1 class="text-2xl font-bold">Educacion</h1>
@@ -72,6 +79,7 @@ export const prerender = true;
     <Section
       arial-label="Mis habilidades como programador"
       data-aos="fade-in"
+      data-aos-once="true"
       data-aos-delay="100"
     >
       <h1 class="text-2xl font-bold">Skills</h1>
@@ -94,12 +102,11 @@ export const prerender = true;
         class="text-2xl font-bold mb-2"
         data-aos="fade-in"
         data-aos-delay="100"
+        data-aos-once="true"
       >
         Mis proyectos
       </h1>
-      <article
-        class="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto"
-      >
+      <article class="grid grid-cols-1 gap-3 max-w-[800px] mx-auto">
         {
           projects.map((project) => {
             const { slug, data } = project;
@@ -110,6 +117,7 @@ export const prerender = true;
                 class="flex flex-col justify-center"
                 data-aos="fade-in"
                 data-aos-delay="100"
+                data-aos-once="true"
               >
                 <a
                   target="_blank"
@@ -123,21 +131,22 @@ export const prerender = true;
                     alt={title}
                   />
                 </a>
+                <div class="mt-2 mb-4">
+                  <h2
+                    transition:name={`title-${slug}`}
+                    class="text-2xl font-bold leading-tight text-white"
+                  >
+                    {title}
+                  </h2>
 
-                <h2
-                  transition:name={`title-${slug}`}
-                  class="text-2xl font-bold leading-tight text-white"
-                >
-                  {title}
-                </h2>
-
-                <p class="mb-1 text-gray-300 opacity-90 text-sm">
-                  {description}
-                </p>
-                <div>
-                  <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                    {type}
-                  </span>
+                  <p class="mb-1 text-gray-300 opacity-90 text-sm">
+                    {description}
+                  </p>
+                  <div>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                      {type}
+                    </span>
+                  </div>
                 </div>
               </div>
             );
@@ -148,6 +157,7 @@ export const prerender = true;
     <Section
       data-aos="fade-in"
       data-aos-delay="100"
+      data-aos-once="true"
       arial-label="Zona de contacto"
     >
       <h1 class="text-2xl font-bold">Contacto</h1>
